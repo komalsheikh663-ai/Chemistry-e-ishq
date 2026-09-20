@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chemistry e ishq - Reader Mode</title>
+    
+    <link rel="preconnect" href="https://drive.google.com">
+    
+    <style>
+        /* खूबसूरत लाइट ब्राउन और वार्म थीम */
+        :root { 
+            --main: #8B5E3C; /* रिच वॉलनट ब्राउन (बटन और हैडर के लिए) */
+            --bg: #FDFBF7;   /* सॉफ्ट लाइट क्रीम/ब्राउन बैकग्राउंड */
+            --card-bg: #FFFFFF; 
+            --accent: #A0724E; 
+        }
+        
+        /* تحریر کاپی کرنے پر پابندی */
+        * { -webkit-user-select: none !important; user-select: none !important; }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            text-align: center; background-color: var(--bg); 
+            margin: 0; padding: 0; overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .app-header { 
+            background: #F4ECE1; /* हल्का एलिगेंट ब्राउन टोन */
+            padding: 20px 10px; 
+            border-bottom: 3px solid var(--main); 
+            box-shadow: 0 2px 10px rgba(139, 94, 60, 0.15); 
+        }
+        
+        .app-title { 
+            font-size: 35px; 
+            font-weight: 900; 
+            color: var(--main); 
+            margin: 0; 
+            font-family: 'Georgia', serif; 
+            font-style: italic; 
+        }
+
+        /* ڈبل کالم لے آؤٹ (Grid) */
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; 
+            padding: 20px 15px; 
+        }
+
+        .p-btn { 
+            background: var(--main); 
+            color: #fff; 
+            border: none; 
+            padding: 16px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            box-shadow: 0 4px 6px rgba(139, 94, 60, 0.2); 
+            transition: 0.3s;
+        }
+
+        .p-btn:active { transform: scale(0.95); background: var(--accent); }
+
+        .info-card { 
+            background: var(--card-bg); 
+            margin: 15px; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border-left: 6px solid var(--main); 
+            border-right: 6px solid var(--main); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+        }
+
+        /* سیکورٹی شیلڈ (تاکہ کوئی لنک نہ نکال سکے) */
+        .content-display-area { 
+            position: relative; 
+            width: 100%; 
+            height: 85vh; 
+            display: none; 
+            border-top: 2px solid var(--main); 
+            background: #EFE6DC; 
+            overflow: hidden; 
+        }
+        
+        /* یہ تہہ اوپر کے بٹنز اور لنک کو چھپاتی ہے */
+        .shield-layer { 
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            width: 100%; 
+            height: 65px; 
+            background: transparent; 
+            z-index: 9999; 
+        }
+        
+        iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 1; }
+
+        /* لوڈنگ اینیمیشن */
+        .loader { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            border: 4px solid #E3D3C4; 
+            border-top: 4px solid var(--main); 
+            border-radius: 50%; 
+            width: 40px; 
+            height: 40px; 
+            animation: spin 1s linear infinite; 
+            z-index: 150; 
+        }
+
+        @keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+
+    <div class="app-header">
+        <h1 class="app-title">Chemistry e ishq</h1>
+        <div style="font-style: italic; color: #6D4C41; font-size: 14px;">By Husny Kanwal</div>
+    </div>
+
+    <div class="info-card">
+        <div style="color: #4A2C11; font-weight: bold; font-size: 17px;">Novel's by <b>Husny Kanwal...</b></div>
+        <div style="color: #6D4C41; font-size: 15px;">Novels : jo dil m uter jayn❤️...</div>
+    </div>
+
+    <!-- جدید ڈرائیو آئی ڈیز کے ساتھ اپ ڈیٹ شدہ لنکس -->
+    <div class="grid-container">
+        <button class="p-btn" onclick="secureOpen('1rlcIrC92tv6kx5EVwGv_oi8-37JkLh05')">Part 1</button>
+        <button class="p-btn" onclick="secureOpen('1YW7qwLDWALVzcWVSkhgqZiFF3luFkboF')">Part 2</button>
+        <button class="p-btn" onclick="secureOpen('161hiJFGDGbqo0_XkXlGd48afQzICP-GH')">Part 3</button>
+        <button class="p-btn" onclick="secureOpen('1DJZX7mgzK_rY0feIuzryekzpdHnsW9DM')">Part 4</button>
+    </div>
+
+    <div class="content-display-area" id="viewArea">
+        <div class="shield-layer"></div>
+        <div class="loader" id="loadingIcon"></div>
+        <iframe id="novelFrame" onload="document.getElementById('loadingIcon').style.display='none'"></iframe>
+    </div>
+
+    <script>
+        // ناول کھولنے کا محفوظ طریقہ
+        function secureOpen(id) {
+            const area = document.getElementById('viewArea');
+            const frame = document.getElementById('novelFrame');
+            
+            area.style.display = 'block';
+            document.getElementById('loadingIcon').style.display = 'block';
+            
+            // ڈائریکٹ لنک چھپانے کے لیے گوگل ڈرائیو پریویو موڈ
+            frame.src = `https://drive.google.com/file/d/${id}/preview`;
+            
+            // بٹن دبانے کے بعد نیچے سکرول کرنا
+            setTimeout(() => { 
+                area.scrollIntoView({ behavior: 'smooth' }); 
+            }, 300);
+        }
+
+        // کی بورڈ شارٹ کٹس پر پابندی (انسپیکٹ ایلیمنٹ روکنے کے لیے)
+        document.addEventListener('keydown', e => { 
+            if (e.ctrlKey && ['c','u','s','p','a','i'].includes(e.key)) e.preventDefault(); 
+            if (e.keyCode == 123) e.preventDefault(); // F12 بلاک
+        });
+    </script>
+</body>
+</html>
